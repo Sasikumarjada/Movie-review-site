@@ -3,30 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Movie Reviews</title>
     <link rel="stylesheet" href="styles.css">
-    <title>Movie Review Site</title>
 </head>
 <body>
-    <header>
-        <h1>Movie Review Site</h1>
-    </header>
-    <main>
-        <section id="review-form">
-            <h2>Submit Your Review</h2>
-            <form id="form">
-                <input type="text" id="movie-title" placeholder="Movie Title" required>
-                <textarea id="review" placeholder="Your Review" required></textarea>
-                <button type="submit">Submit Review</button>
-            </form>
-        </section>
-        <section id="reviews">
-            <h2>Reviews</h2>
-            <div id="review-list"></div>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2023 Movie Review Site</p>
-    </footer>
+    <div class="carousel">
+        <div class="slide">
+            <img src="https://via.placeholder.com/300x180?text=Movie+1" alt="Movie 1">
+            <div class="content">
+                <h2>Inception</h2>
+                <p>A mind-bending thriller with stunning visuals. 9/10</p>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="https://via.placeholder.com/300x180?text=Movie+2" alt="Movie 2">
+            <div class="content">
+                <h2>The Matrix</h2>
+                <p>Revolutionary sci-fi action masterpiece. 8.5/10</p>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="https://via.placeholder.com/300x180?text=Movie+3" alt="Movie 3">
+            <div class="content">
+                <h2>Interstellar</h2>
+                <p>Emotionally charged space epic. 9.5/10</p>
+            </div>
+        </div>
+    </div>
+    <div class="controls">
+        <button onclick="prevSlide()">Previous</button>
+        <button onclick="nextSlide()">Next</button>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
