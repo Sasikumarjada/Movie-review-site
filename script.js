@@ -1,16 +1,30 @@
-document.getElementById('form').addEventListener('submit', function(event) {
-    event.preventDefault();
+const carousel = document.querySelector('.carousel');
+let currentAngle = 0;
+const slides = document.querySelectorAll('.slide');
+const totalSlides = slides.length;
 
-    const movieTitle = document.getElementById('movie-title').value;
-    const reviewText = document.getElementById('review').value;
+function updateCarousel() {
+    carousel.style.transform = `rotateY(${currentAngle}deg)`;
+    
+    slides.forEach((slide, index) => {
+        const angle = (360 / totalSlides) * index + currentAngle;
+        slide.style.opacity = Math.cos(angle * Math.PI / 180);
+        slide.style.transform = `rotateY(${angle}deg) translateZ(250px) scale(${Math.cos(angle * Math.PI / 180) * 0.5 + 0.5})`;
+    });
+}
 
-    const reviewList = document.getElementById('review-list');
-    const reviewItem = document.createElement('div');
-    reviewItem.classList.add('review');
-    reviewItem.innerHTML = `<h3>${movieTitle}</h3><p>${reviewText}</p>`;
+function nextSlide() {
+    currentAngle -= 360 / totalSlides;
+    updateCarousel();
+}
 
-    reviewList.appendChild(reviewItem);
+function prevSlide() {
+    currentAngle += 360 / totalSlides;
+    updateCarousel();
+}
 
-    // Clear the form
-    document.getElementById('form').reset();
-});
+// Auto-rotate every 5 seconds
+setInterval(nextSlide, 5000);
+
+// Initial setup
+updateCarousel();
